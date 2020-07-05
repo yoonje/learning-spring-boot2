@@ -40,6 +40,7 @@ Spring Boot Restful
 * RESTful API
   * MVC에서 Controller 등록
     * @RestController 어노테이션을 클래스에 등록하고 컨트롤러 클래스 안에 HTTP Method와 연결할 함수 선언하고 `@ResquestMapping(method=RequestMethod.{메소드이름},path="{URL경로}")` 또는 `@{메소드이름}Mapping(path="URL경로")`를 그 함수의 어노테이션으로  설정
+    * `@RequestMapping(path="{URL경로}")`는 클래스에 등록하면 해당 클래스의 디폴트 경로가 연결될 수 있음
     * RestController는 `@Controller + @ResponseBody`로 뷰를 갖지 않는 REST Data를 반환
   * Bean 객체
     * Spring 컨테이너에 관리하는 객체로 스프링의 모든 객체는 Bean 객체로 의존성 주입이라는 형태로 관리
@@ -84,6 +85,15 @@ RESTful Service
 =======
 * Validation
   * javax의 validation이나 하이버네이트 validation API를 통해서 유효성 검증을 할 수 있음
+  * `@Size` 어노테이션을 통해서 사용자 입력에 대한 크기를 지정할 수 있고 `@Past` 어노테이션을 과거 값만 입력 받을 수 있게 지정할 수 있음
+  * `@Valid` 어노테이션을 `@RequestBody` 어노테이션과 함께 HTTP 요청 핸들러 함수의 파라미터에 지정하여 바디의 유효성을 검증
+* Filtering
+  * 방법 1
+    * 특정 필드를 외부에 노출시키고 싶지 않을 때 `@JsonIgnore` 어노테이션을 클래스 단위로 설정하거나 필드 위에 추가하여 외부에 노출을 막아줌
+  * 방법 2
+    * `@JsonFilter`에서 필터 이름을 정의하고 API 핸들러 함수 안에서 `SimpleBeanPropertyFilter` 객체를 선언하고 객체의 `filterOutAllExcept` 함수를 사용하여 필터링 하지 않을 필드를 선택
+    * `FilterProvider` 객체를 `SimpleFilterProvider`에 addFilter하여 선언하고 이후 `FilterProvider` 객체를 `MappingJacksonVlaue`에 필터로 설정하고 `MappingJacksonVlaue`에 필터링에 대상이되는 Bean 객체를 지정한 다음 `MappingJacksonVlaue` 객체를 리턴하면 properties를 필터할 수 있음
+* API version 관리
   * 
 
 Spring Boot API

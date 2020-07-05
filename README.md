@@ -42,7 +42,7 @@ Spring Boot Restful
     * @RestController 어노테이션을 클래스에 등록하고 컨트롤러 클래스 안에 HTTP Method와 연결할 함수 선언하고 `@ResquestMapping(method=RequestMethod.{메소드이름},path="{URL경로}")` 또는 `@{메소드이름}Mapping(path="URL경로")`를 그 함수의 어노테이션으로  설정
     * RestController는 `@Controller + @ResponseBody`로 뷰를 갖지 않는 REST Data를 반환
   * Bean 객체
-    * Spring 컨테이너에 관리하는 객체로 스프링의 모든 객체로 Bean 객체를 통해서 클래스를 이용
+    * Spring 컨테이너에 관리하는 객체로 스프링의 모든 객체는 Bean 객체로 의존성 주입이라는 형태로 관리
 * lombok 플러그인을 활용하기
   * lombok의 `@Data`: getter, setter, equals, toString을 자동 생성
   * lombok의 `@AllArgsConstructor`: 클래스의 모든 변수를 가진 생성자 자동 생성
@@ -53,12 +53,38 @@ Spring Boot Restful
   * DispathcerServlet: 사용자의 요청을 처리해주는 게이트웨이로 클라이언트의 모든 요청을 받아서 처리(`/`)하고 Handler로 요청을 전달
 * Path Variable
   * URI에 가변 데이터를 서버가 받기 위해서 Mapping 어노테이션의 인자에 {}를 설정하는 것
+  * 핸들러 함수 전달인자에서 `@PathVariable` 어노테이션을 통해 값을 받을 수 있고 전달인자의 자료형을 지정하여 String을 형변환 시킬 수 있음
 
 User Service API
 =======
+* 프로젝트 구조
+  * User: 다룰 데이터 모델 클래스
+  * UserDaoService: 비즈니스 로직에 연관된 기능에 대한 클래스 
+  * UserController: 서비스 인스턴스를 스프링에 의해 관리되도록 의존성 주입을 통해 서비스를 사용할 MVC의 컨트롤러
+* GET 요청 처리
+  * `@Service` 어노테이션을 통해서 stereotype을 설정하여 서비스 클래스를 설정
+  * `@RestController` 어노테이션을 통해서 컨트롤러 클래스를 설정하고 `@GetMapping` 어노테이션과 url matching 함수를 통해서 핸들러 함수 정의 
+* POST 요청 처리
+  * `@Service` 어노테이션을 통해서 stereotype을 설정하여 서비스 클래스를 설정
+  * `@RestController` 어노테이션을 통해서 컨트롤러 클래스를 설정하고 `@PostMapping` 어노테이션과 url matching 함수를 통해서 핸들러 함수 정의
+  * 사용자의 Request의 Body 안에 있는 데이터를 받기 위헤서 `@RequestBody` 어노테이션과 전달인자를 핸들러 함수에 정의
+* HTTP 상태 리턴 변경
+  * `ServletUriComponentBuilder`를 통해서 HTTP 상태 코드, path를 변경할 수 있음
+  * 핸들러 함수에서 URI를 생성하고 이에 대해서 ResponseEntity를 만들어서 리턴하게 하여 처리
+* HTTP 상태 코드 변경
+  * 서버가 HTTP 요청을 처리할 수 없을 경우에 사용할 예외 클래스를 만들고 `@ResponseStatus` 어노테이션을 통해서 예외를 던져 처리할 수 있음
+  * `@RestContoroller` 어노테이션을 추가한 예외 핸들러 클래스를 만들고 `@ControllerAdvice` 어노테이션을 추가하여 모든 컨트롤러가 실행될 때 사전 실행될 수 있도록 AOP를 활용하여 추가
+  * `@RestContoroller`와 `@ControllerAdvice` 어노테이션이 추가되고 `ResponseEntityExceptionHanlder`를 상속받은 예외 핸들러 클래스는 다른 컨트롤러가 실행될 때 예외가 나면 모든 예외 상황에서 해당 핸들러 함수로 처리가 되도록 설정됨 
+  * `@ExceptionHandler` 어노테이션을 추가하여 어떤 예외를 처리할지를 구체적으로 지정 가능
+* DELETE 요청 처리
+  * `@Service` 어노테이션을 통해서 stereotype을 설정하여 서비스 클래스를 설정
+  * `@RestController` 어노테이션을 통해서 컨트롤러 클래스를 설정하고 `@DeleteMapping` 어노테이션과 url matching 함수를 통해서 핸들러 함수 정의
 
 RESTful Service
 =======
+* Validation
+  * javax의 validation이나 하이버네이트 validation API를 통해서 유효성 검증을 할 수 있음
+  * 
 
 Spring Boot API
 =======

@@ -93,14 +93,26 @@ RESTful Service
   * 방법 2
     * `@JsonFilter`에서 필터 이름을 정의하고 API 핸들러 함수 안에서 `SimpleBeanPropertyFilter` 객체를 선언하고 객체의 `filterOutAllExcept` 함수를 사용하여 필터링 하지 않을 필드를 선택
     * `FilterProvider` 객체를 `SimpleFilterProvider`에 addFilter하여 선언하고 이후 `FilterProvider` 객체를 `MappingJacksonVlaue`에 필터로 설정하고 `MappingJacksonVlaue`에 필터링에 대상이되는 Bean 객체를 지정한 다음 `MappingJacksonVlaue` 객체를 리턴하면 properties를 필터할 수 있음
-* API version 관리
-  * 
 
 Spring Boot API
 =======
+* Swagger
+  * REST API에 대한 문서를 추가할 수 있는 기능
+  * `@Configuration` 어노테이션을 통해 설정이라는 것을 명시하고 `@EnableSwagger2` 어노테이션을 통해서 스웨거 생성 설정
+  * `@Bean`으로 등록한 메소드에서 `DocumentationType.SWAGGER_2`로 스웨거가 설정된 `Docket`이라는 객체를 반환
+  * 반환하는`Docket`에 apiInfo, produces, consumes 메소드에 변수로 정의한 내용을 할당하여 커스터마이징할 수 있고 모델 자체에도 `@ApiModel` 어노테이션을 통해서 모델 자체나 필드에 각각 description or notes로 커스터마이징할 수 있음
+* Acuator
+  * 웹 에플리케이션 상태의 모니터링하는 기능
+* Spring Security
 
 Java Persistence API
 =======
 
 RESTful API Design
 =======
+
+### 보충
+* Versioning
+* HATEOAS
+* Acuator
+* Security

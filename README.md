@@ -108,8 +108,10 @@ Java Persistence API
 RESTful API Design
 =======
 
+
 ### 보충
-* Versioning
-* HATEOAS
-* Acuator
-* Security
+* Versioning: section3
+* HATEOAS: section4
+* Acuator: section4
+* Security: section4
+* JPA: section5

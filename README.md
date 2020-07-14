@@ -109,7 +109,7 @@ RESTful API Design
 =======
 
 
-### 보충
+### 보충할 것
 * Versioning: section3
 * HATEOAS: section4
 * Acuator: section4

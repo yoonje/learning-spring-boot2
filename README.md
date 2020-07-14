@@ -107,7 +107,21 @@ Java Persistence API
 
 RESTful API Design
 =======
-
+* api를 사용하는 이용자의 관점에서 설계
+* Request, Response Type과 헤더 값 등등과 같은 HTTP 프로토콜 자체를 충분히 활용
+* 각 리소스 별 적절한 HTTP 메소드를 제공
+  * GET: 조회
+  * POST: 생성
+  * PUT: 수정
+  * DELETE: 삭제
+* HTTP 응답 상태 코드를 구분
+* 토큰 발급 / 스프링 시큐리티 / 헤더 값 등등을 통해서 URI 안에 민감 정보 포함 X
+* 복수 상태의 URI 사용
+* 리소스에 대해서 `명사`를 사용
+* 일관된 endpoint를 이용하고 URI 자체는 상태의 종류를 나타내지 않음
+  * PUT /gist/{id}/star
+  * DELETE /gist/{id}/star
+* 특수하게 검색을 위해서 `/serach` 메소드를 설계하고 여러 종류 URI로 다양한 요청 처리 가능
 
 ### 보충할 것
 * Versioning: section3

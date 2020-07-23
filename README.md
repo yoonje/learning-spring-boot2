@@ -1,4 +1,4 @@
-# Spring Framework 정리 자료
+# Spring Boot 정리 자료
 Spring Boot RESTful Web Services 정리 문서
 
 Table of contents

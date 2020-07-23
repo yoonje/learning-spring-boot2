@@ -31,9 +31,9 @@ Spring Boot Restful
     * Lifecycle/package: 컴파일한 내용을 jar/war로 패키징하는 명령
     * Lifecycle/install: 패킹한 내용을 로컬 서버에 배포하는 명령
   * pom.xml 구조
-    * <parent>: 스프링 부트 정보 프로젝트에 대한 내용
-    * <properties>: 자바 정보에 대한 내용
-    * <dependencies>: 스프링 부트 프로젝트 라이브러리 
+    * <parent> : 스프링 부트 정보 프로젝트에 대한 내용
+    * <properties> : 자바 정보에 대한 내용
+    * <dependencies> : 스프링 부트 프로젝트 라이브러리 
   * 자바 압축 파일
     * war: jar를 이용한 압축 파일로, 외부의 웹 서버와 동작시키기 위해서 패키징하는 방식
     * jar: jar를 이용한 압축 파일로, 내장된 웹 서버와 동작시키기 위해서 패키징하는 방식

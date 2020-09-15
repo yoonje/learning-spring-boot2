@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonFilter("UserInfoV2")
+//@JsonFilter("UserInfoV2")
 public class UserV2 extends User {
     private String grade;
 }

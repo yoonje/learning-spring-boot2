@@ -102,12 +102,26 @@ RESTful Service
    
 Spring Boot API
 =======
+* HETEOAS
+  * REST API에서 현재 리소스와 연관된 자원 상태의 추가적인 정보를 제공하는 기능
+  * 2.1 버전이라면 `Resource` / `ControllerLinkBuilder`를 사용하여 이용 가능
+  * `ControllerLinkBuilder`를 통해서 연관된 API를 링킹
 * Swagger
   * REST API에 대한 문서를 추가할 수 있는 기능
   * `@Configuration` 어노테이션을 통해 설정이라는 것을 명시하고 `@EnableSwagger2` 어노테이션을 통해서 스웨거 생성 설정
   * `@Bean`으로 등록한 메소드에서 `DocumentationType.SWAGGER_2`로 스웨거가 설정된 `Docket`이라는 객체를 반환
   * 반환하는`Docket`에 apiInfo, produces, consumes 메소드에 변수로 정의한 내용을 할당하여 커스터마이징할 수 있고 모델 자체에도 `@ApiModel` 어노테이션을 통해서 모델 자체나 필드에 각각 description or notes로 커스터마이징할 수 있음
-
+* Actuator
+  * API의 상태를 모니터링하는 기능
+  * pom.xml의 라이브러리를 추가하기만해도 API의 헬스 정보를 파악할 수 있음
+* HAL Browser
+  * HATEOAS와 유사한 기능으로 API 리소스에 대해서 웹 브라우저에서 확인하는 기능
+  * pom.xml의 라이브러리를 추가하기만해도 HATEOAS의 기능을 코드 상의 객체 선언 없이 HAL Borwser에서 쉽게 사용할 수 있음
+* Security
+  * `pring-boot-starter-security`를 추가하면 자동으로 패스워드가 하나 생성되고 이를 이용해서 접근 권한 처리가됨
+  * yml 파일에 security 설정의 `WebSecurityConfigurerAdapter`을 통해서 사용자가 정의한 인증 정보를 추가할 수 있음
+  * 추후에는 DB를 연동하여 이용하는 것이 바람직
+  
 Java Persistence API
 =======
 
@@ -130,8 +144,5 @@ RESTful API Design
 * 특수하게 검색을 위해서는 `/serach` 메소드를 설계하고 여러 종류 URI로 다양한 요청 처리 가능
 
 ### 보충할 것
-* Versioning: section3
-* HATEOAS: section4
-* Acuator: section4
 * Security: section4
 * JPA: section5

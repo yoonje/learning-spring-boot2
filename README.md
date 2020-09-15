@@ -93,7 +93,13 @@ RESTful Service
   * 방법 2
     * `@JsonFilter`에서 필터 이름을 정의하고 API 핸들러 함수 안에서 `SimpleBeanPropertyFilter` 객체를 선언하고 객체의 `filterOutAllExcept` 함수를 사용하여 필터링 하지 않을 필드를 선택
     * `FilterProvider` 객체를 `SimpleFilterProvider`에 addFilter하여 선언하고 이후 `FilterProvider` 객체를 `MappingJacksonVlaue`에 필터로 설정하고 `MappingJacksonVlaue`에 필터링에 대상이되는 Bean 객체를 지정한 다음 `MappingJacksonVlaue` 객체를 리턴하면 properties를 필터할 수 있음
-
+* Versioning
+  * 방법 1 : url에 버전 정보를 넣어서 각각의 버전 별로 분리하여 API를 제공
+    * 이전 버전에 대한 모델과 컨트롤러를 통해서 다음 버전을 쉽게 개발
+    * `BeanUtils`를 통해서 각각의 빈간의 데이터를 쉽게 복사할 수 있음
+  * 방법 2 : 요청 파라미터를 넘겨줘서 버전 별로를 분리하여 API를 제공
+  * 방법 3 : 헤더 정보를 이용해서 버전 별로를 분리하여 API를 제공
+   
 Spring Boot API
 =======
 * Swagger

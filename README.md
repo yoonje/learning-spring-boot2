@@ -124,6 +124,10 @@ Spring Boot API
   
 Java Persistence API
 =======
+* JPA: 기존 JDBC의 대안으로 자바 ORM의 표준 API 명세
+  * EntityManager를 통해서 CRUD를 처리 
+  * JPA의 구현체는 `Hibernate` 라이브러리가 주로 사용되고 JPA는 `Spring Data JPA`의 구현되어 있는 함수와 인터페이스로 주로 이용함
+
 
 RESTful API Design
 =======

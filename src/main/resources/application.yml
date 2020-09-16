@@ -11,7 +11,12 @@ spring:
   devtools:
     livereload:
       enabled: true
-  security:
-    user:
-      name: username
-      password: password
+  jpa:
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+#  security:
+#    user:
+#      name: username
+#      password: password

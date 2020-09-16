@@ -127,8 +127,14 @@ Java Persistence API
 * JPA: 기존 JDBC의 대안으로 자바 ORM의 표준 API 명세
   * EntityManager를 통해서 CRUD를 처리 
   * JPA의 구현체는 `Hibernate` 라이브러리가 주로 사용되고 JPA는 `Spring Data JPA`의 구현되어 있는 함수와 인터페이스로 주로 이용함
+* JPA 이용 방법
+  * `@Entity` 어노테이션을 통해서 모델을 정의하면 테이블이 자동 생성되고 `resources` 아래에 정의된 sql 파일을 자동으로 읽어 실행
+  * `JpaRepository<모델 이름, 기본 키>`을 상속받아 사용하여 레포지토리를 만들고 이 내부에 구현된 함수들을 통해서 디비관련 조작
+  * find 관련 함수에서는 Optional<모델 이름>이 리턴이 되는데, 이는 결과가 비어 있을 수 있기 때문
+  * 새로운 객체를 만들고 객체들간의 관계를 지으려면 `OneToOne`, `ManyToOne`, `OneToMany` 등등을 활용하여 매핑할 수 있음
+  * `FetchType`을 통해서 관계를 갖고 있는 값들을 읽어 들이는 시기를 조절할 수 있음
 
-
+  
 RESTful API Design
 =======
 * api를 사용하는 이용자의 관점에서 설계

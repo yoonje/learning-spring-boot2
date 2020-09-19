@@ -152,6 +152,3 @@ RESTful API Design
   * PUT /gist/{id}/star
   * DELETE /gist/{id}/star
 * 특수하게 검색을 위해서는 `/serach` 메소드를 설계하고 여러 종류 URI로 다양한 요청 처리 가능
-
-### 보충할 것
-* JPA: section5
